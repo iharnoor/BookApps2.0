@@ -6,4 +6,5 @@
     <color name="navbar_background">#1a1a48</color>
     <color name="toolbar_background">#bebebe</color>
     <color name="dialog_button_color">#26C6DA</color>
+    <color name="data_entry_background">#D1F9FF</color>
 </resources>

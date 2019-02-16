@@ -29,6 +29,8 @@ public class ContactActivity extends AppCompatActivity implements DatePickerDial
         initToggleButton();
         setForEditing(false);
         initChangeDateButton();
+
+
     }
 
 
