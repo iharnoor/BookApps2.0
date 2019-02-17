@@ -1,6 +1,7 @@
 package com.example.mycontactlist;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,9 +30,10 @@ public class ContactAdapter extends ArrayAdapter<Contact> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = convertView;
+
+
         try {
             Contact contact = items.get(position);
-
             if (v == null) {
                 LayoutInflater vi = (LayoutInflater) adapterContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 v = vi.inflate(R.layout.list_item, null);
@@ -43,19 +45,25 @@ public class ContactAdapter extends ArrayAdapter<Contact> {
             contactName.setText(contact.getContactName());
             contactNumber.setText(contact.getPhoneNumber());
             b.setVisibility(View.INVISIBLE);
-        }
-        catch (Exception e) {
+
+
+            if (position % 2 == 1) {
+                v.setBackgroundColor(Color.RED);
+            } else {
+                v.setBackgroundColor(Color.BLUE);
+            }
+        } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
         }
         return v;
     }
 
-    public void showDelete(final int position, final View convertView,final Context context, final Contact contact) {
+    public void showDelete(final int position, final View convertView, final Context context, final Contact contact) {
         View v = convertView;
         final Button b = (Button) v.findViewById(R.id.buttonDeleteContact);
         //2
-        if (b.getVisibility()==View.INVISIBLE) {
+        if (b.getVisibility() == View.INVISIBLE) {
             b.setVisibility(View.VISIBLE);
             b.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -65,11 +73,11 @@ public class ContactAdapter extends ArrayAdapter<Contact> {
                     deleteOption(contact.getContactID(), context);
                 }
             });
-        }
-        else {
+        } else {
             hideDelete(position, convertView, context);
         }
     }
+
     //3
     private void deleteOption(int contactToDelete, Context context) {
         ContactDataSource db = new ContactDataSource(context);
@@ -77,12 +85,12 @@ public class ContactAdapter extends ArrayAdapter<Contact> {
             db.open();
             db.deleteContact(contactToDelete);
             db.close();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             Toast.makeText(adapterContext, "Delete Contact Failed", Toast.LENGTH_LONG).show();
         }
         this.notifyDataSetChanged();
     }
+
     //4
     public void hideDelete(int position, View convertView, Context context) {
         View v = convertView;
