@@ -2,12 +2,14 @@ package com.example.mycontactlist;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 
 public class ContactSettingsActivity extends AppCompatActivity {
 
@@ -23,6 +25,8 @@ public class ContactSettingsActivity extends AppCompatActivity {
         initSortByClick();
         initSortOrderClick();
 
+        NestedScrollView scrollViewObject = (NestedScrollView) findViewById(R.id.scrollView);
+        scrollViewObject.setBackgroundResource(R.color.custom_color3);
     }
 
     private void initListButton() {
