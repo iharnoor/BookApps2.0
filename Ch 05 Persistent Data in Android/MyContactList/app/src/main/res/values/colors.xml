@@ -9,4 +9,6 @@
     <color name="custom_color1">#007B8A</color>
     <color name="custom_color2">#FFC92E</color>
     <color name="custom_color3">#FFF7E4</color>
+    <color name="settingsColorBlue">#7AFFE1</color>
+    <color name="settingsColorBeige">#FFDE8E</color>
 </resources>
